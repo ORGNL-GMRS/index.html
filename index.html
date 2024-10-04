@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Notecard</title>
+    <title>Interactive HUD</title>
     <style>
         body, html {
             margin: 0;
@@ -22,17 +22,20 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            color: #fff;
         }
         .splash-screen.active {
             display: flex;
+            flex-direction: column; /* Stack items vertically */
             background-color: #000;
-            color: #fff;
         }
         .home-page.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             background-color: #fff;
             color: #000;
-            overflow: auto;
         }
         .logo {
             max-width: 100%;
@@ -43,9 +46,6 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-        }
-        .html-content {
-            padding: 20px;
         }
         .hud {
             display: flex;
@@ -72,43 +72,28 @@
         function enterHomePage() {
             document.querySelector('.splash-screen').classList.remove('active');
             document.querySelector('.home-page').classList.add('active');
-            fetchHtmlContent();
-        }
-
-        function fetchHtmlContent() {
-            fetch('https://raw.githubusercontent.com/ORGNL-GMRS/index.html/refs/heads/main/index.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.querySelector('.html-content').innerHTML = data;
-                })
-                .catch(error => {
-                    console.error('Error fetching HTML content:', error);
-                    document.querySelector('.html-content').innerText = 'Failed to load content.';
-                });
         }
     </script>
 </head>
 <body>
     <!-- Splash Screen -->
     <div class="splash-screen active">
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="https://via.placeholder.com/150" alt="Logo" class="logo">
         <button class="enter-button" onclick="enterHomePage()">Enter</button>
     </div>
 
     <!-- Home Page -->
     <div class="home-page">
-        <div class="html-content">
-            <div class="hud">
-                <img src="call_icon.png" alt="Call Icon" class="image" id="callImage">
-                <div class="button" id="callButton">Call</div>
-                <img src="text_icon.png" alt="Text Icon" class="image" id="textImage">
-                <div class="button" id="textButton">Text</div>
-                <img src="internet_icon.png" alt="Internet Icon" class="image" id="internetImage">
-                <div class="button" id="internetButton">Internet</div>
-                <img src="money_icon.png" alt="Money Icon" class="image" id="moneyImage">
-                <div class="button" id="moneyButton">Transfer Money</div>
-                <input type="text" class="input" placeholder="Type a message" id="textInput">
-            </div>
+        <div class="hud">
+            <img src="https://via.placeholder.com/50" alt="Call Icon" class="image" id="callImage">
+            <div class="button" id="callButton">Call</div>
+            <img src="https://via.placeholder.com/50" alt="Text Icon" class="image" id="textImage">
+            <div class="button" id="textButton">Text</div>
+            <img src="https://via.placeholder.com/50" alt="Internet Icon" class="image" id="internetImage">
+            <div class="button" id="internetButton">Internet</div>
+            <img src="https://via.placeholder.com/50" alt="Money Icon" class="image" id="moneyImage">
+            <div class="button" id="moneyButton">Transfer Money</div>
+            <input type="text" class="input" placeholder="Type a message" id="textInput">
         </div>
     </div>
 </body>
