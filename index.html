@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiPhone Interface</title>
+    <title>Interactive HUD</title>
     <style>
         body, html {
             margin: 0;
@@ -19,10 +19,6 @@
             text-align: center;
             color: #fff;
         }
-        .image {
-            width: 50px;
-            height: 50px;
-        }
         .button {
             padding: 10px 20px;
             margin: 10px;
@@ -31,76 +27,16 @@
             color: #fff;
             background: none;
         }
-        .input {
-            padding: 10px;
-            border: 1px solid #fff;
-            width: calc(100% - 22px);
-            color: #fff;
-            background: none;
-        }
     </style>
     <script>
-        function sendCommand(command, message) {
-            window.location = 'secondlife://' + command + '/' + encodeURIComponent(message);
-        }
-
-        function showCall() {
-            let username = prompt('Enter the username to call:');
-            if (username) {
-                sendCommand('call', username);
-                alert('Calling ' + username + '...');
-            }
-        }
-
-        function showText() {
-            let username = prompt('Enter the username to text:');
-            if (username) {
-                let message = prompt('Enter your message:');
-                if (message) {
-                    sendCommand('message', username + ':' + message);
-                    alert('Message sent to ' + username);
-                }
-            }
-        }
-
-        function showInternet() {
-            let url = prompt('Enter URL:', 'https://www.example.com');
-            if (url) {
-                document.getElementById('internetFrame').style.display = 'block';
-                document.getElementById('internetFrame').src = url;
-            } else {
-                alert('URL input cancelled.');
-            }
-        }
-
-        function showMoneyTransfer() {
-            let username = prompt('Enter the username to send money to:');
-            if (username) {
-                let amount = prompt('Enter amount to transfer:');
-                if (amount) {
-                    sendCommand('pay', username + ':' + amount);
-                    alert('Transferring $' + amount + ' to ' + username + '...');
-                }
-            }
-        }
-
-        function hideInternet() {
-            document.getElementById('internetFrame').style.display = 'none';
+        function showAlert() {
+            alert('Button clicked!');
         }
     </script>
 </head>
 <body>
     <div class="hud">
-        <img src="call_icon.png" alt="Call Icon" class="image" id="callImage">
-        <button class="button" id="callButton" onclick="showCall()">Call</button>
-        <img src="text_icon.png" alt="Text Icon" class="image" id="textImage">
-        <button class="button" id="textButton" onclick="showText()">Text</button>
-        <img src="internet_icon.png" alt="Internet Icon" class="image" id="internetImage">
-        <button class="button" id="internetButton" onclick="showInternet()">Internet</button>
-        <img src="money_icon.png" alt="Money Icon" class="image" id="moneyImage">
-        <button class="button" id="moneyButton" onclick="showMoneyTransfer()">Transfer Money</button>
-        <input type="text" class="input" placeholder="Type a message" id="textInput">
-        <iframe id="internetFrame" style="display:none;"></iframe>
+        <button class="button" onclick="showAlert()">Click Me</button>
     </div>
 </body>
 </html>
